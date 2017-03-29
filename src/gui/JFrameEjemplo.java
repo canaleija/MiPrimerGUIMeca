@@ -8,9 +8,12 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import listeners.AdaptadorListenersBotones;
 
 /**
  *
@@ -28,16 +31,20 @@ public class JFrameEjemplo extends JFrame {
         this.titulo = titulo;
         this.dim = dim;
         initComponents();
+        initListenersAdaptador();
+        
     }
 
     private void initComponents() {
         // inicializar todos los componentes 
         // de mi JFrame
         // creando los botones
-        this.btn1 = new JButton("Norte");
-        this.btn2 = new JButton("Sur");
-        this.btn3 = new JButton("Oeste");
-        this.btn4 = new JButton("Este");
+        this.btn1 = new JButton("Rojo");
+        this.btn2 = new JButton("Verde");
+        this.btn3 = new JButton("Azul");
+        this.btn4 = new JButton("Amarillo");
+        
+        
         
         this.panelCentral =  new JPanel();
         this.panelCentral.setBackground(Color.magenta);
@@ -59,6 +66,50 @@ public class JFrameEjemplo extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
         
+        
+    }
+
+    private void initListeners() {
+       // implementar Listener para el evento btn1
+        
+        this.btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // setear el color del panel central
+               panelCentral.setBackground(Color.RED);
+            }
+        });
+        
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelCentral.setBackground(Color.GREEN);
+            }
+        });
+        
+        btn3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelCentral.setBackground(Color.blue);
+            }
+        });
+        
+        btn4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelCentral.setBackground(Color.YELLOW);
+            }
+        });
+    }
+
+    private void initListenersAdaptador() {
+        // creamos el adaptador
+        AdaptadorListenersBotones adaptador = new AdaptadorListenersBotones(panelCentral);
+        // agregamos el adaptador a los botones
+        this.btn1.addActionListener(adaptador);
+        this.btn2.addActionListener(adaptador);
+        this.btn3.addActionListener(adaptador);
+        this.btn4.addActionListener(adaptador);
         
     }
     
