@@ -6,6 +6,7 @@
 package miprimerguimeca;
 
 import gui.JFrameEjemplo;
+import gui.JFrameGridLayOut;
 import java.awt.Dimension;
 
 /**
@@ -18,8 +19,7 @@ public class MiPrimerGUIMeca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JFrameEjemplo jf1 = new JFrameEjemplo("Mi primer Ventana", new Dimension(400, 600));
-     
+        JFrameGridLayOut jf = new JFrameGridLayOut("Grid Lay Out", new Dimension(600, 600));
     }
     
 }
