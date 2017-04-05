@@ -28,15 +28,22 @@ public class JButtonNuevo extends JButton{
         // aumentamos cantidad
         cantidad++;
         // modificamos el texto del boton
-        setText(""+cantidad);
+        setText(""+getCantidad());
     
     }
     public void restar(){
      // restamos la unidad
      cantidad--;
      // modificamos el texto del boton
-     setText(""+cantidad);
+     setText(""+getCantidad());
     
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public int getCantidad() {
+        return cantidad;
     }
     
     

@@ -6,11 +6,10 @@
 package listeners;
 
 import gui.JButtonNuevo;
+import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javafx.scene.input.MouseButton;
-
-import sun.util.calendar.JulianCalendar;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -29,6 +28,20 @@ public class ControladorEventosBotones implements MouseListener{
          if (e.getButton()==MouseEvent.BUTTON3){
           btn.restar();
         }
+         if (e.getButton()==MouseEvent.BUTTON2){
+         // obtenemos la referencia del contenedor donde
+         // se encuentra el boton que fue presionado
+         Container padre =  btn.getParent();
+         JTextArea area = (JTextArea) padre.getComponent(5);
+         int aux = 1;
+         // acumular las cantidades de los botones
+         for (int x=0;x<=4;x++){
+             JButtonNuevo b = (JButtonNuevo)padre.getComponent(x);
+             aux*= b.getCantidad();
+         }
+         area.setText(""+aux);
+         }
+         
     }
 
     @Override
@@ -50,5 +63,7 @@ public class ControladorEventosBotones implements MouseListener{
     public void mouseExited(java.awt.event.MouseEvent e) {
         
     }
+
+   
     
 }
